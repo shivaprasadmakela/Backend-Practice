@@ -4,6 +4,7 @@ import com.practicebackend.wordbook.service.BookService;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PutMapping;
 
+
+@CrossOrigin(origins = "http://localhost:3000")
 
 @RestController
 @RequestMapping("/books")
@@ -51,4 +55,26 @@ public class BookController {
         boolean deleted = bookService.deleteBook(id);
         return deleted ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Boolean> updateBook(
+            @PathVariable Long id,
+            @RequestBody Book updatedBookData
+    ) {
+        boolean updated = bookService.updateBook(
+                id,
+                updatedBookData.getName(),
+                updatedBookData.getAuthor(),
+                updatedBookData.getPublisher(),
+                updatedBookData.getPublicationDate()
+                
+        );
+
+        if (updated) {
+            return ResponseEntity.ok(true); // Return true if update was successful
+        } else {
+            return ResponseEntity.notFound().build(); // Return 404 if the book was not found
+        }
+    }
+
 }

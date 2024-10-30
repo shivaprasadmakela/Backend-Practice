@@ -1,4 +1,5 @@
 package com.practicebackend.wordbook.service;
+
 import org.springframework.stereotype.Service;
 import com.practicebackend.wordbook.repository.BookRepository;
 import java.util.List;
@@ -10,33 +11,45 @@ public class BookService {
 
     private final BookRepository bookRepository;
 
-    
     public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 
-    public Book addBook(String name, String author, String publisher, String publicationDate) { // Accept name and author as parameters
-        return bookRepository.save(new Book(null, name, author,publisher, publicationDate)); // Now it will work
+    // Add a new book with image URL
+    public Book addBook(String name, String author, String publisher, String publicationDate) {
+        return bookRepository.save(new Book(null, name, author, publisher, publicationDate, publicationDate));
     }
-    
 
     // Get all books
-    public List<Book> getAllBooks() { // Changed method name to getAllBooks
+    public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
 
     // Get a book by ID
-    public Optional<Book> getBookById(Long id) { // Changed method name to getBookById
+    public Optional<Book> getBookById(Long id) {
         return bookRepository.findById(id);
     }
 
     // Delete a book by ID
-public boolean deleteBook(Long id) {
-    if (bookRepository.existsById(id)) { // Check if the book exists
-        bookRepository.deleteById(id);
-        return true; // Return true if deletion was successful
+    public boolean deleteBook(Long id) {
+        if (bookRepository.existsById(id)) {
+            bookRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
-    return false; // Return false if the book did not exist
-}
 
+    // Update a book by ID with optional image URL
+    public boolean updateBook(Long id, String name, String author, String publisher, String publicationDate) {
+        if (bookRepository.existsById(id)) {
+            Book book = bookRepository.findById(id).get();
+            book.setName(name);
+            book.setAuthor(author);
+            book.setPublisher(publisher);
+            book.setPublicationDate(publicationDate);
+            bookRepository.save(book);
+            return true;
+        }
+        return false;
+    }
 }

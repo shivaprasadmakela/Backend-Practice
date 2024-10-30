@@ -1,5 +1,4 @@
 package com.practicebackend.wordbook.entity;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,12 +14,13 @@ public class Book {
     private String author;
     private String publisher;
     private String publicationDate;
+    
 
     // No-argument constructor (required by JPA)
     public Book() {}
 
     // Constructor with parameters
-    public Book(Long id, String name, String author, String publisher, String publicationDate) {
+    public Book(Long id, String name, String author, String publisher, String publicationDate, String imageUrl) {
         this.id = id;
         this.name = name;
         this.author = author;
@@ -68,4 +68,6 @@ public class Book {
     public void setPublicationDate(String publicationDate) {
         this.publicationDate = publicationDate;
     }
+
+   
 }
