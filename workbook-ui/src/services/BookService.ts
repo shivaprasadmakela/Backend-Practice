@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Base URL for backend
-const API_URL = 'http://localhost:8080/books';
+const API_URL = 'https://wordbooks-3d5f2c4156c7.herokuapp.com/books';
 
 // Interface for Book type
 export interface Book {
