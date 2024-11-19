@@ -11,7 +11,7 @@ const AddBook: React.FC = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       const data = await getAllBooks();
-      setBooks(data);
+      setBooks(data || []);  // Ensure data is an array
     };
     fetchBooks();
   }, []);
@@ -24,18 +24,23 @@ const AddBook: React.FC = () => {
     }));
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setBook(prevState => ({
-          ...prevState,
-          imageUrl: reader.result as string,
-        }));
-      };
-      reader.readAsDataURL(file);
-    }
+  // const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (e.target.files && e.target.files[0]) {
+  //     const file = e.target.files[0];
+  //     const reader = new FileReader();
+  //     reader.onloadend = () => {
+  //       setBook(prevState => ({
+  //         ...prevState,
+  //         imageUrl: reader.result as string,
+  //       }));
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
+
+  const handilLogOut = () => {
+    localStorage.removeItem('token');
+    window.location.href = '/login';
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -71,6 +76,7 @@ const AddBook: React.FC = () => {
 
   return (
     <>
+    <button onClick={handilLogOut} className='SubmitButton'>Logout</button>
       <div>
         <h2>{editMode ? 'Edit Book' : 'Add New Book'}</h2>
         <form onSubmit={handleSubmit}>
@@ -110,12 +116,12 @@ const AddBook: React.FC = () => {
             onChange={handleChange}
             required
           />
-          <input
+          {/* <input
             className='inputBox'
             type="file"
             accept="image/*"
             onChange={handleImageChange}
-          />
+          /> */}
 
           <button className='SubmitButton' type="submit">
             {editMode ? 'Save Changes' : 'Add Book'}
@@ -134,7 +140,6 @@ const AddBook: React.FC = () => {
                 <h4>Book Author: {book.author}</h4>
                 <p>Publisher: {book.publisher}</p>
                 <p>Publication Date: {book.publicationDate}</p>
-                
               </div>
               <div>
                 <img onClick={() => handleDelete(book.id!)} className='deleteIcon' src={process.env.PUBLIC_URL + "asserts/bin_484611.png"} alt="deleteIcon" />
