@@ -38,11 +38,6 @@ const AddBook: React.FC = () => {
   //   }
   // };
 
-  const handilLogOut = () => {
-    localStorage.removeItem('token');
-    window.location.href = '/login';
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (book.name && book.author) {
