@@ -24,19 +24,19 @@ const AddBook: React.FC = () => {
     }));
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setBook(prevState => ({
-          ...prevState,
-          imageUrl: reader.result as string,
-        }));
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  // const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (e.target.files && e.target.files[0]) {
+  //     const file = e.target.files[0];
+  //     const reader = new FileReader();
+  //     reader.onloadend = () => {
+  //       setBook(prevState => ({
+  //         ...prevState,
+  //         imageUrl: reader.result as string,
+  //       }));
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -110,12 +110,12 @@ const AddBook: React.FC = () => {
             onChange={handleChange}
             required
           />
-          <input
+          {/* <input
             className='inputBox'
             type="file"
             accept="image/*"
             onChange={handleImageChange}
-          />
+          /> */}
 
           <button className='SubmitButton' type="submit">
             {editMode ? 'Save Changes' : 'Add Book'}
