@@ -31,6 +31,7 @@ border-radius: 6px 6px 6px 6px;
 background-color: #8C57FF;
 color: #FFFFFF;
 cursor: pointer;
+font-weight: 700;
 }
 
 ul{
@@ -43,3 +44,136 @@ ul{
     cursor: pointer;
    margin-left: 10px;
 }
+
+
+
+/* ---->  Login*/
+
+
+
+.mainPage {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+  }
+  
+  .leftSection {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logo{
+    width: 25%;
+  }
+  .insideSection {
+    width: 60%;
+    justify-content: space-between;
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .heading1 {
+    height: 25px;
+    font-family: Inter;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 10px;
+    text-align: left;
+    color: #0a0a0a9e;
+  }
+  
+  .loginSpan {
+    color: #6b7280;
+  }
+  
+  .subHeading {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    color: #8c57ff;
+    margin-bottom: 10px;
+  }
+  
+  .rightSection {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #8c57ff17;
+  }
+  
+  .rightSection img {
+    height: 50%;
+  }
+  
+  .anchorElement{
+    cursor: pointer;
+    text-decoration: none ;
+  }
+  .emailTextbox {
+    width: 345px;
+    height: 45px;
+    border: 1px solid #e2e2e2;
+    border-radius: 6px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .emailTextbox ::placeholder {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    color: #757575;
+  }
+  
+  .signUpButton {
+    width: 356px;
+    height: 45px;
+    background-color: #8c57ff;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: center;
+    color: #ffff;
+    border-radius: 6px;
+    border: 1px solid #e2e2e2;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  .termsAck {
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+    color: #0000006e;
+    width: 350px;
+  }
+  
+  .containerMessage{
+    padding: 10px;
+    width: 350px;
+  height: 76px;
+  border-radius: 6px 6px 6px 6px;
+  background-color: #5AC29614;
+  color: #5AC296;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: left;
+  
+  }

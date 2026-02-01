@@ -11,7 +11,7 @@ const AddBook: React.FC = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       const data = await getAllBooks();
-      setBooks(data);
+      setBooks(data || []);  // Ensure data is an array
     };
     fetchBooks();
   }, []);
@@ -71,6 +71,7 @@ const AddBook: React.FC = () => {
 
   return (
     <>
+    <button onClick={handilLogOut} className='SubmitButton'>Logout</button>
       <div>
         <h2>{editMode ? 'Edit Book' : 'Add New Book'}</h2>
         <form onSubmit={handleSubmit}>
@@ -134,7 +135,6 @@ const AddBook: React.FC = () => {
                 <h4>Book Author: {book.author}</h4>
                 <p>Publisher: {book.publisher}</p>
                 <p>Publication Date: {book.publicationDate}</p>
-                
               </div>
               <div>
                 <img onClick={() => handleDelete(book.id!)} className='deleteIcon' src={process.env.PUBLIC_URL + "asserts/bin_484611.png"} alt="deleteIcon" />
