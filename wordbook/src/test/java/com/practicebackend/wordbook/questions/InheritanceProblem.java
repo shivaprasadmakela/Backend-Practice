@@ -13,7 +13,7 @@ public class InheritanceProblem<T> extends ArrayList<T> {
 
     @Override
     public T get(int index){
-        return super.get(index);  // Fixed: use index parameter
+        return super.get(index);
     }
 
     @Override
